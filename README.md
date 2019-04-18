@@ -1,11 +1,11 @@
-# orion-homepage-react
+# redux-example
 
-`git clone https://github.com/imranhsayed/orion-home-react`
+`git clone https://github.com/imranhsayed/redux-example`
 `npm install`
 
-## Development
+## :zap: Development
 `npm run dev`
 
-## Production
+## :snowflake: Production
 `npm run build`
 # redux-example
