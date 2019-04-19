@@ -5,17 +5,16 @@ import PropTypes from 'prop-types';
 
 class Posts extends React.Component {
 
-	componentDidMount() {
+	handleButtonClick = ( event ) => {
 		this.props.fetchPosts();
-	}
+	};
 
 	/**
 	 * Return the posts items if they exits
 	 *
 	 * @return {string|*[]}
 	 */
-	renderPostItems = () => {
-		const postItems = this.props.posts;
+	renderPostItems = ( postItems ) => {
 		if ( postItems.length ) {
 			return postItems.map( post => (
 					<div key={post.id}>
@@ -23,16 +22,19 @@ class Posts extends React.Component {
 						<p>{post.body}</p>
 					</div>
 				) );
-		} else {
-			return 'Loading..';
 		}
 	};
 
 	render() {
+		const postItems = this.props.posts;
 		return(
 			<div>
 				<h3>Posts</h3>
-				{this.renderPostItems()}
+				{ ! postItems.length && (
+					<button onClick={this.handleButtonClick}>Get Posts</button>
+					)
+				}
+				{this.renderPostItems( postItems )}
 			</div>
 		);
 	}
