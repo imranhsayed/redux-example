@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import combinedReducer from './reducers';
 
 const initialState = {};
 
@@ -15,7 +15,7 @@ const middleware = [thunk];
  * third param is the enhancer
  */
 const store = createStore(
-	rootReducer,
+	combinedReducer,
 	initialState,
 	compose(
 		applyMiddleware(...middleware),
