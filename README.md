@@ -13,7 +13,7 @@
 ## :seedling: Branch Details
 :squirrel: [fetch-posts](https://github.com/imranhsayed/redux-example/fetch-posts) Redux Example to fetch Posts from https://jsonplaceholder.typicode.com/
 
-:school_satchel: [second-example](https://github.com/imranhsayed/redux-example/second-example) Redux Example 
+:school_satchel:[second-example](https://github.com/imranhsayed/redux-example/second-example) Redux Example 
 
 
 ## :snowflake: Steps to take

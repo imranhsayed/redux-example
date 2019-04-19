@@ -7,6 +7,7 @@ import store from "./store";
 class App extends React.Component {
 
 	render() {
+		console.warn( 'came' );
 		return(
 				<Provider store={store}>
 					<Posts/>
