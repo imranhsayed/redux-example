@@ -12,6 +12,21 @@ class PostForm extends React.Component {
 
 	handleFormSubmit = ( event ) => {
 		event.preventDefault();
+
+		const postData = {
+			title: this.state.title,
+			body: this.state.body,
+		};
+
+		fetch( 'https://jsonplaceholder.typicode.com/posts', {
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify( postData )
+		} )
+			.then( res => res.json() )
+			.then( jsonData => console.warn( jsonData ) );
 	};
 
 	handleOnChangeInput = ( event ) => {
