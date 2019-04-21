@@ -2,6 +2,9 @@ import { combineReducers, createStore } from "redux";
 
 /**
  * Reducer which needs to return new state/ old one
+ * This reducer only takes care of userData and cannot change
+ * any other reducer data like tweetsReducer
+ *
  * @param state Default State value
  * @param action
  *
@@ -11,7 +14,8 @@ const userReducer = ( state={}, action ) => {
 	switch ( action.type ) {
 		/*
 		 * We creating a new state, whose value will be equal to old state (...state ) and
-		 * then name: action.payload will modify the name property in prev state
+		 * then name: action.payload will override the name property value in prev state
+		 * and then return a new state with overriden values of name
 		 */
 		case 'CHANGE_NAME': {
 			state = { ...state, name: action.payload };
@@ -23,7 +27,7 @@ const userReducer = ( state={}, action ) => {
 		}
 
 	}
-	
+
 	// Return a new state after modifying these values
 	return state;
 };
