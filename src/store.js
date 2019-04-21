@@ -1,88 +1,62 @@
-import { combineReducers, createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
+import logger from 'redux-logger';
+import thunk from 'redux-thunk';
 
-/**
- * Reducer which needs to return new state/ old one
- * This reducer only takes care of userData and cannot change
- * any other reducer data like tweetsReducer
- *
- * @param state Default State value
- * @param action
- *
- * @return {Array} State
- */
-const userReducer = ( state={}, action ) => {
+const initialState = {
+	fetching: false,
+	fetched: false,
+	posts: [],
+	error: null
+};
+
+const reducer = ( state = initialState, action ) => {
 	switch ( action.type ) {
-		/*
-		 * We creating a new state, whose value will be equal to old state (...state ) and
-		 * then name: action.payload will override the name property value in prev state
-		 * and then return a new state with overriden values of name
-		 */
-		case 'CHANGE_NAME': {
-			state = { ...state, name: action.payload };
+		case "FETCH_POSTS_START": {
+			return { ...state, fetching: true };
 			break;
 		}
-		case 'CHANGE_AGE': {
-			state = { ...state, age: action.payload };
+		case "RECEIVE_POSTS": {
+			return { ...state, fetching: false, fetched: true, posts: action.payload };
 			break;
 		}
-
+		case "FETCH_POSTS_ERRORS": {
+			return { ...state, fetching: false, error: action.payload }
+			break;
+		}
 	}
 
-	// Return a new state after modifying these values
-	return state;
+	return  state;
 };
 
-/**
- * Reducer which needs to return new state/ old one
- *
- * @param state Default State value
- * @param action
- *
- * @return {Array} State
- */
-const tweetsReducer = ( state=[], action ) => {
-	return state;
-};
 
-/**
- * Combine reducers
- * Its takes an object as param
- * 'user' tells what piece of data we are modifying and
- * 'userReducer' is the reducer function which is going to handle that
- *
- * @type {Reducer<any>}
- */
-const reducers = combineReducers( {
-	user: userReducer,
-	tweets: tweetsReducer
-} );
+const middleware = applyMiddleware( thunk, logger );
 
 /**
  * Create store using the reducer function added above
  * and pass an initial state.
  */
-const store = createStore( reducers );
+const store = createStore( reducer, middleware );
 
 /**
- * Listen to the store using subscribe
- * When Anything changes to the store. the function inside of it will be called.
- * store.getState() return the current state value.
- */
-store.subscribe( () => {
-	console.warn( 'Store Changed: State value =', store.getState() );
-} );
-
-/**
+ * Action creators
  * Lets dispatch an action.
- * When the below action is dispatched store.subscribe will call the method inside of it.
+ * Multiple synchronous actions
+ * Instead of passing an object containing type and payload as store.dispatch parameter, we can pass a multiple dispatch functions
  */
-store.dispatch( {
-	type: 'CHANGE_NAME',
-	payload: 'Imran'
+store.dispatch( ( dispatch ) => {
+	dispatch( {type: 'FETCH_POSTS_START'} );
+	fetch('https://jsonplaceholder.typicode.com/posts')
+		.then(response => response.json())
+		.then(jsonData => {
+			dispatch( { type: 'RECEIVE_POSTS', payload: jsonData } );
+		})
+		.catch( err => {
+			dispatch( 'FETCH_POSTS_ERRORS' );
+		} )
+
 } );
-store.dispatch( {
-	type: 'CHANGE_AGE',
-	payload: 28
-} );
+
 
 export default store;
+
+
