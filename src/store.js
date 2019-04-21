@@ -72,17 +72,19 @@ store.subscribe( () => {
 	console.warn( 'Store Changed: State value =', store.getState() );
 } );
 
+
+// Action creator
+function changeName() {
+	return {
+		type: 'CHANGE_NAME',
+		payload: 'Imran'
+	}
+}
+
 /**
- * Lets dispatch an action.
+ * Lets dispatch synchronous action by passing a function( action creator ) inside of store.dispatch()
  * When the below action is dispatched store.subscribe will call the method inside of it.
  */
-store.dispatch( {
-	type: 'CHANGE_NAME',
-	payload: 'Imran'
-} );
-store.dispatch( {
-	type: 'CHANGE_AGE',
-	payload: 28
-} );
+store.dispatch( changeName() );
 
 export default store;
