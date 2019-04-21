@@ -11,10 +11,10 @@
 `npm run build`
 
 ## :seedling: Branch Details
-:department_store: [1-basic-redux-store](https://github.com/imranhsayed/redux-example/tree/basic-redux-store) Basic Redux store without using React. Find all code in src/store.js
-:squirrel: [3-fetch-posts](https://github.com/imranhsayed/redux-example/tree/fetch-posts) Redux Example to fetch Posts from https://jsonplaceholder.typicode.com/
+1. :department_store: [1-basic-redux-store](https://github.com/imranhsayed/redux-example/tree/basic-redux-store) Basic Redux store without using React. Find all code in src/store.js
+2. :squirrel: [3-fetch-posts](https://github.com/imranhsayed/redux-example/tree/fetch-posts) Redux Example to fetch Posts from https://jsonplaceholder.typicode.com/
 
-:school_satchel:[second-example](https://github.com/imranhsayed/redux-example/second-example) Redux Example 
+3. :school_satchel:[second-example](https://github.com/imranhsayed/redux-example/second-example) Redux Example 
 
 
 ## :snowflake: Steps to take
