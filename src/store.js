@@ -1,26 +1,46 @@
-import { createStore } from "redux";
+import { combineReducers, createStore } from "redux";
 
 /**
- * Create a reducer function.
- * It takes a state and an action and returns a new state for the store.
- * @param state
- * @param action
+ * Reducer which needs to return new state/ old one
+ * @param state Default State value
+ * @param actions
+ *
+ * @return {Array} State
  */
-const reducer = function ( state, action ) {
-	if ( 'INCREMENT' === action.type ) {
-		return state + action.payload;
-	}
-	if ( 'DECREMENT' === action.type ) {
-		return state - action.payload;
-	}
-	return  state;
+const userReducer = ( state={}, actions ) => {
+	return state;
 };
+
+/**
+ * Reducer which needs to return new state/ old one
+ *
+ * @param state Default State value
+ * @param actions
+ *
+ * @return {Array} State
+ */
+const tweetsReducer = ( state=[], actions ) => {
+	return state;
+};
+
+/**
+ * Combine reducers
+ * Its takes an object as param
+ * 'user' tells what piece of data we are modifying and
+ * 'userReducer' is the reducer function which is going to handle that
+ *
+ * @type {Reducer<any>}
+ */
+const reducers = combineReducers( {
+	user: userReducer,
+	tweets: tweetsReducer
+} );
 
 /**
  * Create store using the reducer function added above
  * and pass an initial state.
  */
-const store = createStore( reducer, 0 );
+const store = createStore( reducers, 0 );
 
 /**
  * Listen to the store using subscribe
