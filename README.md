@@ -15,7 +15,7 @@
 2. :department_store: [combine-multiple-reducers](https://github.com/imranhsayed/redux-example/tree/combine-multiple-reducers) Example for multiple reducers
 3. :squirrel: [3-fetch-posts](https://github.com/imranhsayed/redux-example/tree/fetch-posts) Redux Example to fetch Posts from https://jsonplaceholder.typicode.com/
 4. :school_satchel: [asynchronous-actions-with-redux](https://github.com/imranhsayed/redux-example/tree/asynchronous-actions-with-redux) Handling asynchronous actions with redux
-5. :school_satchel:[second-example](https://github.com/imranhsayed/redux-example/second-example) Redux Example 
+5. :school_satchel:[redux-with-react](https://github.com/imranhsayed/redux-example/tree/redux-with-react) Using Redux store for data in React Components 
 
 ## :snowflake: Steps to take
 
