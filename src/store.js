@@ -3,11 +3,22 @@ import { combineReducers, createStore } from "redux";
 /**
  * Reducer which needs to return new state/ old one
  * @param state Default State value
- * @param actions
+ * @param action
  *
  * @return {Array} State
  */
-const userReducer = ( state={}, actions ) => {
+const userReducer = ( state={}, action ) => {
+	switch ( action, type ) {
+		case 'CHANGE_NAME': {
+			state,name = action.payload;
+			break;
+		}
+		case 'CHANGE_AGE': {
+			state.age = action.payload;
+			break;
+		}
+
+	}
 	return state;
 };
 
@@ -15,11 +26,11 @@ const userReducer = ( state={}, actions ) => {
  * Reducer which needs to return new state/ old one
  *
  * @param state Default State value
- * @param actions
+ * @param action
  *
  * @return {Array} State
  */
-const tweetsReducer = ( state=[], actions ) => {
+const tweetsReducer = ( state=[], action ) => {
 	return state;
 };
 
@@ -56,24 +67,12 @@ store.subscribe( () => {
  * When the below action is dispatched store.subscribe will call the method inside of it.
  */
 store.dispatch( {
-	type: 'INCREMENT',
-	payload: 1
+	type: 'CHANGE_NAME',
+	payload: 'Imran'
 } );
 store.dispatch( {
-	type: 'INCREMENT',
-	payload: 2
-} );
-store.dispatch( {
-	type: 'INCREMENT',
-	payload: 3
-} );
-store.dispatch( {
-	type: 'INCREMENT',
-	payload: 100
-} );
-store.dispatch( {
-	type: 'DECREMENT',
-	payload: 1
+	type: 'CHANGE_AGE',
+	payload: 28
 } );
 
 export default store;
