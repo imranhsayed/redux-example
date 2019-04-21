@@ -8,17 +8,23 @@ import { combineReducers, createStore } from "redux";
  * @return {Array} State
  */
 const userReducer = ( state={}, action ) => {
-	switch ( action, type ) {
+	switch ( action.type ) {
+		/*
+		 * We creating a new state, whose value will be equal to old state (...state ) and
+		 * then name: action.payload will modify the name property in prev state
+		 */
 		case 'CHANGE_NAME': {
-			state,name = action.payload;
+			state = { ...state, name: action.payload };
 			break;
 		}
 		case 'CHANGE_AGE': {
-			state.age = action.payload;
+			state = { ...state, age: action.payload };
 			break;
 		}
 
 	}
+	
+	// Return a new state after modifying these values
 	return state;
 };
 
@@ -51,7 +57,7 @@ const reducers = combineReducers( {
  * Create store using the reducer function added above
  * and pass an initial state.
  */
-const store = createStore( reducers, 0 );
+const store = createStore( reducers );
 
 /**
  * Listen to the store using subscribe
