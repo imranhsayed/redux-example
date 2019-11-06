@@ -1,4 +1,4 @@
-# redux-example
+# redux-example.
 
 `git clone https://github.com/imranhsayed/redux-example`
 
