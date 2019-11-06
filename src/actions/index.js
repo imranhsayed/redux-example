@@ -1,5 +1,12 @@
-export function getPostData() {
-	return function ( dispatch ) {
+
+/**
+ * Action creators
+ * Lets dispatch an action.
+ * Multiple synchronous actions
+ * Instead of passing an object containing type and payload as store.dispatch parameter, we can pass a multiple dispatch functions
+ */
+export const  getPosts = () =>  {
+	return ( dispatch ) => {
 		// First Action Dispatch
 		dispatch( {type: 'FETCH_POSTS_START'} );
 
@@ -15,5 +22,7 @@ export function getPostData() {
 				// Third Action Dispatch
 				dispatch( 'FETCH_POSTS_ERRORS' );
 			} )
+
 	}
-}
+
+};
